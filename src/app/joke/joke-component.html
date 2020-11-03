@@ -1,0 +1,10 @@
+<div class="card card-block">
+
+  <h4 class="card-title">{{data.setup}}</h4>
+  <p class="card-text" [hidden]="data.hide"> {{data.punchline}}</p>
+  <!--a class ="btn btn-primary" (click) = "joke.hide =! joke.hide"> Tell me</a>-->
+  <a class="btn btn-warning" (click)="data.toggle ()"> Tell me</a>
+  
+  <a name="" id="" class="btn btn-danger"  (role)="button" (click)="deletJoke1(data)"> Delete</a>
+
+</div>

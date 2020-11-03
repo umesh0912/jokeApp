@@ -1,0 +1,68 @@
+<form #f="ngForm" novalidate (ngSubmit)="onSubmit()">
+  <fieldset ngModelGroup="name">
+    <div class="form-group" [ngClass]="{
+      'has-danger' : firstName?.invalid && (firstName?.dirty || firstName?.touched),
+      'has-success' : firstName?.valid && (firstName?.dirty || firstName?.touched)
+    }">
+      <label for="firstName">First Name</label>
+      <input type="text" name="firstName" id="" class="form-control" placeholder="" aria-describedby="helpId" required
+        [(ngModel)]="model.firstName" #firstName="ngModel">
+      <small id="helpId" class="text-muted">Help text</small>
+      <div class="form-control-feedback" *ngIf="firstName?.errors && (firstName?.dirty || firstName?.touched)">
+        <p *ngIf="firstName?.errors.required">Frist Name is required</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" id="" class="form-control" placeholder="" aria-describedby="helpId" ngModel>
+      <small id="helpId" class="text-muted">Help text</small>
+    </div>
+  </fieldset>
+
+  <div class="form-group" [ngClass]="{
+    'has-danger': email?.invalid && (email?.dirty || email?.touched),
+    'has-success': email?.valid && (email?.dirty || email?.touched)
+    }">
+    <label for="email">Email</label>
+    <input type="text" name="email" id="" class="form-control" placeholder="" [(ngModel)]="model.email" required
+      aria-describedby="helpId" #email="ngModel">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+
+  <div class="form-group" [ngClass] = "{
+    'has-danger' : pwd?.invalid && (pwd?.dirty||pwd?.touched),
+    'has-success' : pwd?.valid && (pwd?.dirty || pwd?.touched)
+  }">
+    <label for="password">Password</label>
+    <input type="password" 
+    name="password" 
+    id="" 
+    class="form-control" 
+    placeholder="" 
+    aria-describedby="helpId"
+    [(ngModel)] = "model.password" 
+    #pwd="ngModel"
+    required
+    minlength="8">
+    <div class = "form-control-feedback" *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)"> 
+
+      <p *ngIf="pwd.errors.required">password required</p>
+      <p *ngIf="pwd.errors.minlength">Password lenght must be minimum 8</p>
+
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="language">Language</label>
+    <select name="language" class="form-control" id="" ngModel>
+      <option *ngFor="let lang of langs" [value]="lang">{{lang}}</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Submit</button>
+</form>
+
+<pre>Valid? {{email?.valid}}</pre>
+<pre>Dirty? {{email?.dirty}}</pre>
+<pre>Touched? {{email?.touched}}</pre>
+
+<pre>{{f.value | json}}</pre>

@@ -1,0 +1,17 @@
+<div>
+  <div class="form-group">
+    <label for="setup"></label>
+    <input type="text"  #setup name="setup" id="setup" class="form-control" placeholder="Enter the setup"
+      aria-describedby="helpId">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+
+  <div class="form-group">
+    <label for="punchline">PunchLine</label>
+    <input type="text" #punchline  name="punchline" id="punchline" class="form-control" placeholder="Enter the punchline"
+      aria-describedby="helpId">
+    <small id="helpId" class="text-muted">Help text</small>
+  </div>
+
+  <input name="create" id="" class="btn btn-primary" type="button" value="Create" (click)="createJoke(setup.value, punchline.value)">
+</div>
